@@ -7,6 +7,8 @@ import {
 
 import { AnimatePresence, motion } from 'framer-motion'
 
+import BubblesCanvas from '@/components/Bubbles'
+
 import Home from '@/pages/Home'
 import NotFound from '@/pages/errors/NotFound'
 
@@ -25,6 +27,7 @@ const AppContent = () => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5 }}
 				>
+					<BubblesCanvas />
 					<Routes location={location} key={location.pathname}>
 						<Route path={LINKS.routes.home} element={<Home />} />
 						<Route path='*' element={<NotFound />} />
