@@ -18,10 +18,15 @@ export const dropdownChevronStyles = (variant: 'desktop' | 'mobile') =>
 		variant === 'mobile' && 'ml-auto'
 	)
 
-export const dropdownContentStyles = (variant: 'desktop' | 'mobile') =>
+export const dropdownContentStyles = (
+	variant: 'desktop' | 'mobile',
+	size: 'default' | 'large' = 'default'
+) =>
 	cn(
 		'border bg-background/60 backdrop-blur-lg shadow-xl',
-		variant === 'mobile' ? 'w-full' : 'w-40'
+		variant === 'mobile' ? 'w-full' : size === 'large' ? 'w-80' : 'w-40'
 	)
 
 export const colorSwatchStyles = 'w-4 h-4 rounded-full'
+export const iconSmallStyles = 'w-4 h-4'
+export const iconMediumStyles = 'w-5 h-5'
