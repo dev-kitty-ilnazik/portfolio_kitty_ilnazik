@@ -8,7 +8,8 @@ import {
 import { AnimatePresence, motion } from 'framer-motion'
 
 import BubblesCanvas from '@/components/Bubbles'
-import ScrollToTopButton from './components/ScrollToTopButton'
+import Header from '@/components/Header'
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 
 import Home from '@/pages/Home'
 import NotFound from '@/pages/errors/NotFound'
@@ -29,6 +30,7 @@ const AppContent = () => {
 					transition={{ duration: 0.5 }}
 				>
 					<BubblesCanvas />
+					<Header />
 					<Routes location={location} key={location.pathname}>
 						<Route path={LINKS.routes.home} element={<Home />} />
 						<Route path='*' element={<NotFound />} />
