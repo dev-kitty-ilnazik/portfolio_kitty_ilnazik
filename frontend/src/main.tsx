@@ -7,13 +7,16 @@ import { ThemeProvider } from '@/providers/ThemeProvider.tsx'
 
 import App from './App.tsx'
 import './index.css'
+import { ColorThemeProvider } from './providers/ColorThemeProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<QueryProvider>
 			<I18nProvider>
 				<ThemeProvider>
-					<App />
+					<ColorThemeProvider>
+						<App />
+					</ColorThemeProvider>
 				</ThemeProvider>
 			</I18nProvider>
 		</QueryProvider>
