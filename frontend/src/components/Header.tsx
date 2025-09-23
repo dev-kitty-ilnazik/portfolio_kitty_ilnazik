@@ -14,16 +14,9 @@ import { LINKS } from '@/config/links'
 import { PROJECT_CONFIG } from '@/config/project'
 
 import { useMenuItems } from '@/hooks/useMenuItems'
-import { buttonIconStyles, mobileMenuButtonStyles } from '@/lib/styles/buttons'
-import {
-	desktopSwitchersStyles,
-	headerContainerStyles,
-	mobileMenuContentStyles,
-	mobileMenuStyles,
-	mobileNavStyles,
-	mobileSwitchersStyles,
-	navLinkStyles,
-} from '@/lib/styles/header'
+
+import { buttonIconStyles } from '@/lib/styles/buttons'
+import { cn } from '@/lib/utils'
 
 const Header: React.FC = () => {
 	const menuItems = useMenuItems()
@@ -53,7 +46,14 @@ const Header: React.FC = () => {
 	}, [activeSection, menuItems])
 
 	return (
-		<div className={headerContainerStyles(scrolled)}>
+		<div
+			className={cn(
+				'fixed top-4 left-1/2 z-50 transform -translate-x-1/2 transition-all duration-700 ease-in-out w-full px-0 border rounded-2xl',
+				scrolled
+					? 'max-w-5xl border-border bg-background/70 backdrop-blur-lg shadow-lg'
+					: 'max-w-full border-transparent bg-transparent'
+			)}
+		>
 			<header>
 				<div className='container mx-auto px-4'>
 					<div className='flex items-center justify-between h-16 w-full'>
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 							{PROJECT_CONFIG.name}
 						</a>
 						<div className='flex items-center space-x-4'>
-							<div className={desktopSwitchersStyles}>
+							<div className='hidden md:flex items-center space-x-4'>
 								<ThemeSwitcher variant='desktop' />
 								<MusicPlayer variant='desktop' />
 								<LanguageSwitcher variant='desktop' />
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
 								variant='ghost'
 								size='icon'
 								onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-								className={mobileMenuButtonStyles}
+								className='bg-muted'
 							>
 								{isMobileMenuOpen ? (
 									<X className={buttonIconStyles} />
@@ -82,14 +82,28 @@ const Header: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<div className={mobileMenuStyles(isMobileMenuOpen, scrolled)}>
-					<div className={mobileMenuContentStyles}>
-						<nav className={mobileNavStyles}>
+				<div
+					className={cn(
+						'fixed top-20 right-0 transition-all duration-300 ease-in-out z-40 rounded-2xl overflow-hidden w-full sm:w-80 md:w-96 border bg-background',
+						isMobileMenuOpen
+							? 'translate-x-0 opacity-100'
+							: 'translate-x-full opacity-0 pointer-events-none',
+						scrolled ? 'border-border shadow-lg' : 'border-transparent'
+					)}
+				>
+					<div className='max-h-[calc(95vh-5rem)] overflow-y-auto'>
+						<nav className='py-6 px-6 space-y-3'>
 							{menuItems.map(([label, id], index) => (
 								<a
 									key={index}
 									href={`#${id}`}
-									className={navLinkStyles(activeSection, id)}
+									className={cn(
+										'block px-4 py-3 text-base font-medium transition-all duration-300 ease-in-out rounded-lg',
+										'hover:scale-[1.02] hover:shadow-sm hover:bg-primary/20',
+										activeSection === id
+											? 'text-white bg-primary rounded-lg z-10'
+											: 'text-foreground/80'
+									)}
 									onClick={() => setIsMobileMenuOpen(false)}
 								>
 									{label}
@@ -97,7 +111,7 @@ const Header: React.FC = () => {
 							))}
 						</nav>
 
-						<div className={mobileSwitchersStyles}>
+						<div className='sm:hidden border-t border-border pt-6 pb-6 px-6 space-y-4'>
 							<LanguageSwitcher variant='mobile' />
 							<ThemeSwitcher variant='mobile' />
 							<MusicPlayer variant='mobile' />
