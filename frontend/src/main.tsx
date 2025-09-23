@@ -1,13 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
+import { ColorThemeProvider } from '@/providers/ColorThemeProvider.tsx'
 import { I18nProvider } from '@/providers/I18nProvider.tsx'
+import { MusicPlayerProvider } from '@/providers/MusicPlayerProvider.tsx'
 import { QueryProvider } from '@/providers/QueryProvider.tsx'
 import { ThemeProvider } from '@/providers/ThemeProvider.tsx'
 
 import App from './App.tsx'
 import './index.css'
-import { ColorThemeProvider } from './providers/ColorThemeProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
 			<I18nProvider>
 				<ThemeProvider>
 					<ColorThemeProvider>
-						<App />
+						<MusicPlayerProvider>
+							<App />
+						</MusicPlayerProvider>
 					</ColorThemeProvider>
 				</ThemeProvider>
 			</I18nProvider>
