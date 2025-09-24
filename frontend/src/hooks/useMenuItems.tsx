@@ -5,7 +5,7 @@ export const useMenuItems = (): [string, string][] => {
 	const t = useTranslations('app.navigate.item')
 
 	return [
-		[t('home'), LINKS.routes.home],
+		[t('home'), LINKS.routes.hero],
 		[t('about'), LINKS.routes.about],
 		[t('stack'), LINKS.routes.stack],
 		[t('roadmap'), LINKS.routes.roadmap],

@@ -3,6 +3,7 @@ const BASE_API = import.meta.env.VITE_API_URL
 export const LINKS = {
 	routes: {
 		home: '/',
+		hero: '/#home',
 		about: '/#about',
 		stack: '/#stack',
 		roadmap: '/#roadmap',

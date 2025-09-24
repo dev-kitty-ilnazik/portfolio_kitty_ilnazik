@@ -48,7 +48,7 @@ const Header: React.FC = () => {
 	return (
 		<div
 			className={cn(
-				'fixed top-4 left-1/2 z-50 transform -translate-x-1/2 transition-all duration-700 ease-in-out w-full px-0 border rounded-2xl',
+				'fixed top-4 left-1/2 z-50 transform -translate-x-1/2 transition-all duration-500 ease-in-out w-full px-0 border rounded-2xl',
 				scrolled
 					? 'max-w-5xl border-border bg-background/70 backdrop-blur-lg shadow-lg'
 					: 'max-w-full border-transparent bg-transparent'
@@ -96,7 +96,7 @@ const Header: React.FC = () => {
 							{menuItems.map(([label, id], index) => (
 								<a
 									key={index}
-									href={`#${id}`}
+									href={id}
 									className={cn(
 										'block px-4 py-3 text-base font-medium transition-all duration-300 ease-in-out rounded-lg',
 										'hover:scale-[1.02] hover:shadow-sm hover:bg-primary/20',
