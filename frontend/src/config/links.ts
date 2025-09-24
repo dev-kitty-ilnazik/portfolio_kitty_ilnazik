@@ -5,6 +5,7 @@ export const LINKS = {
 		home: '/',
 		hero: '/#home',
 		about: '/#about',
+		stats: '/#stats',
 		stack: '/#stack',
 		roadmap: '/#roadmap',
 		prices: '/#prices',

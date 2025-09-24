@@ -7,6 +7,7 @@ export const useMenuItems = (): [string, string][] => {
 	return [
 		[t('home'), LINKS.routes.hero],
 		[t('about'), LINKS.routes.about],
+		[t('stats'), LINKS.routes.stats],
 		[t('stack'), LINKS.routes.stack],
 		[t('roadmap'), LINKS.routes.roadmap],
 		[t('price'), LINKS.routes.prices],

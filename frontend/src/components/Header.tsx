@@ -29,11 +29,12 @@ const Header: React.FC = () => {
 		const handleScroll = () => {
 			let currentSection = activeSection
 			menuItems.forEach(([_, id]) => {
-				const section = document.getElementById(id)
+				const cleanId = id.replace('/#', '')
+				const section = document.getElementById(cleanId)
 				if (section) {
 					const rect = section.getBoundingClientRect()
 					if (rect.top <= 100 && rect.bottom >= 100) {
-						currentSection = id
+						currentSection = cleanId
 					}
 				}
 			})
@@ -100,7 +101,7 @@ const Header: React.FC = () => {
 									className={cn(
 										'block px-4 py-3 text-base font-medium transition-all duration-300 ease-in-out rounded-lg',
 										'hover:scale-[1.02] hover:shadow-sm hover:bg-primary/20',
-										activeSection === id
+										activeSection === id.replace('/#', '')
 											? 'text-white bg-primary rounded-lg z-10'
 											: 'text-foreground/80'
 									)}

@@ -1,3 +1,4 @@
+import { cardStyles } from '@/lib/styles/cards'
 import { cn } from '@/lib/utils'
 
 function Skeleton({
@@ -33,7 +34,15 @@ function SkeletonText({
 
 function SkeletonCard({ className = '' }: { className?: string }) {
 	return (
-		<div className={`rounded-lg border bg-card p-6 ${className}`}>
+		<div
+			className={`
+			${cardStyles.base}
+			${cardStyles.gradient.primary}
+			${cardStyles.border.primary}
+			animate-shimmer
+			${className}
+		`}
+		>
 			<div className='flex items-center space-x-4'>
 				<Skeleton className='h-12 w-12 rounded-full' />
 				<div className='space-y-2 flex-1'>
